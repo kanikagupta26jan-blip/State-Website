@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - AgroMart</title>
+    <link rel="stylesheet" href="../CSS/AddToCart.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+</head>
+<body>
+    <header class="header">
+      <div class="header-container">
+        <div class="logo">
+          <img src="../assets/main_logo.png" alt="AgroTech Logo">
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="../HtmlStructure/home.html">Home</a></li>
+            <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+            <li class="submenu">
+              <a href="../HtmlStructure/services.html">Services</a>
+              <ul class="submenu-list">
+                <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+                <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+                <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+                <li><a href="#blogs">Blogs & Tutorials</a></li>
+              </ul>
+            </li>
+            <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+            <li><a href="../HtmlStructure/expert.html">Expert Opinion</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <select class="language-switcher">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="ta">Tamil</option>
+            <option value="kn">Kannada</option>
+          </select>
+          <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+          <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="cart-section">
+      <div class="container">
+          <h2>Shopping Cart</h2>
+          <div class="cart-table" id="cartTable"></div>
+          <div class="cart-summary" id="cartSummary"></div>
+      </div>
+    </section>
+    <script src="../scripts/speak.js"></script>
+     <script>
+   function updateCart() {
+    const productCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const equipmentCart = JSON.parse(localStorage.getItem('equipmentCart')) || [];
+    const mergedCart = productCart.concat(equipmentCart);
+
+    const cartTable = document.getElementById('cartTable');
+    const cartSummary = document.getElementById('cartSummary');
+    cartTable.innerHTML = '';
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    mergedCart.forEach(item => {
+        if (item.price === undefined || item.price === null) {
+            console.warn("Missing price for", item.name);
+            item.price = 0;
+        }
+
+        const row = document.createElement('div');
+        row.classList.add('cart-row');
+
+        row.innerHTML = `
+            <div class="cart-item"><span>${item.name}</span></div>
+            <div class="cart-price">₹${item.price}</div>
+            <div class="cart-quantity">
+                <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.name}', this.value)">
+            </div>
+            <div class="cart-total">₹${(item.price * item.quantity).toFixed(2)}</div>
+            <div class="cart-action">
+                <button class="remove-btn" onclick="removeFromCart('${item.name}')">Remove</button>
+            </div>
+        `;
+        cartTable.appendChild(row);
+        totalItems += item.quantity;
+        totalPrice += item.price * item.quantity;
+    });
+
+    // Store total price in localStorage
+    localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+
+    cartSummary.innerHTML = `
+        <div class="summary-row">
+            <span>Total Items:</span>
+            <span>${totalItems}</span>
+        </div>
+        <div class="summary-row">
+            <span>Total Price:</span>
+            <span>₹${totalPrice.toFixed(2)}</span>
+        </div>
+        <div class="summary-actions">
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+        </div>
+    `;
+}
+
+function updateQuantity(productName, quantity) {
+      // Merge both product and equipment carts to update the correct item
+      let productCart = JSON.parse(localStorage.getItem('cart')) || [];
+      let equipmentCart = JSON.parse(localStorage.getItem('equipmentCart')) || [];
+      let mergedCart = productCart.concat(equipmentCart);
+
+      const productIndex = mergedCart.findIndex(item => item.name === productName);
+      if (productIndex !== -1) {
+        mergedCart[productIndex].quantity = parseInt(quantity) || 1;
+      }
+
+      // Separate the carts back based on type (if you have a "type" property) or based on how they were stored.
+      // For simplicity, if you are keeping products and equipment separately,
+      // update both localStorage keys by filtering:
+      const updatedProductCart = mergedCart.filter(item => !item.type || item.type === 'product');
+      const updatedEquipmentCart = mergedCart.filter(item => item.type === 'equipment');
+
+      localStorage.setItem('cart', JSON.stringify(updatedProductCart));
+      localStorage.setItem('equipmentCart', JSON.stringify(updatedEquipmentCart));
+
+      updateCart();
+    }
+
+    function removeFromCart(productName) {
+      // Remove the item from both carts if present
+      let productCart = JSON.parse(localStorage.getItem('cart')) || [];
+      let equipmentCart = JSON.parse(localStorage.getItem('equipmentCart')) || [];
+
+      productCart = productCart.filter(item => item.name !== productName);
+      equipmentCart = equipmentCart.filter(item => item.name !== productName);
+
+      localStorage.setItem('cart', JSON.stringify(productCart));
+      localStorage.setItem('equipmentCart', JSON.stringify(equipmentCart));
+
+      updateCart();
+    }
+
+    window.onload = updateCart;
+  </script>
+</body>
+</html>

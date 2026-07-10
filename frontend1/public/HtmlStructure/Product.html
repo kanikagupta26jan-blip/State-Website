@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Now - AgroMart</title>
+    <link rel="stylesheet" href="../CSS/Product.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+</head>
+<body>
+
+   <!-- Header Section -->
+   <header class="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/main_logo.png" alt="AgroTech Logo">
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="nav">
+        <ul>
+          <li><a href="../HtmlStructure/home.html">Home</a></li>
+          <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+      <li class="submenu">
+        <a href="../HtmlStructure/services.html">Services</a>
+        <ul class="submenu-list">
+          <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+          <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+          <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+          <li><a href="#blogs">Blogs & Tutorials</a></li>
+        </ul>
+    </li>
+    <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+    <li><a href="../HtmlStructure/expert.html">Expert Opinion</a></li>
+  </ul>
+</nav>
+
+      <!-- Language Switcher and Login/Sign Up -->
+      <div class="header-actions">
+        <select class="language-switcher">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ta">Tamil</option>
+          <option value="kn">Kannada</option>
+        </select>
+        <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+        <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+      <div class="container">
+          <div class="product-main">
+              <div class="product-gallery">
+                  <div class="image-thumbnails">
+                      <img src="" alt="Product" id="mainImage">
+                      <div class="thumbnail-images">
+                          <img src="" alt="Thumbnail 1" onclick="changeImage(this)">
+                          <img src="" alt="Thumbnail 2" onclick="changeImage(this)">
+                          <img src="" alt="Thumbnail 3" onclick="changeImage(this)">
+                      </div>
+                  </div>
+              </div>
+              <div class="product-info">
+                  <h1 id="productName">Product Name</h1>
+                  <div class="product-rating">
+                      <span class="rating-stars">★★★★★</span>
+                      <span class="rating-count">(120 reviews)</span>
+                  </div>
+                  <p class="product-price" id="productPrice">$0.00</p>
+                  <p class="product-description" id="productDescription">
+                      Description will appear here.
+                  </p>
+                  <div class="product-quantity">
+                      <label for="quantity">Quantity: </label>
+                      <input type="number" id="quantity" value="1" min="1" max="10">
+                  </div>
+                  <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links Section -->
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+  
+        <!-- Social Media Section -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+          </ul>
+        </div>
+  
+        <!-- Newsletter Subscription -->
+        <div class="footer-newsletter">
+          <h3>Subscribe to Our Newsletter</h3>
+          <p>Stay updated with the latest news, tips, and offers from AgroTech!</p>
+          <form action="#" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="cta-button primary-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p>&copy; 2024 AgroTech. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../scripts/speak.js"></script>
+      <script>
+        // Product data for dynamic content
+        const products = {
+            peas: {
+                name: "Organic Peas",
+                description: "Fresh and organic peas, packed with vitamins and minerals. Ideal for salads, soups, and side dishes.",
+                price: "₹34.99",
+                image: "../assets/peas.jpg",
+                thumbnails: ["../assets/peas1.jpeg", "../assets/peas2.jpeg", "../assets/peas3.jpg", "../assets/peas.jpg"]
+            },
+            cabbage: {
+                name: "Fresh Cabbage",
+                description: "Freshly harvested cabbage, rich in vitamins and fiber.",
+                price: "₹39.99",
+                image: "../assets/cabbage.jpg",
+                thumbnails: ["../assets/cabbage1.jpg", "../assets/cabbage2.jpg", "../assets/cabbage3.jpg", "../assets/cabbage.jpg"]
+            },
+            amla: {
+                name: "Organic Amla",
+                description: "Rich in vitamin C, fresh organic amla",
+                price: "₹49.99",
+                image: "../assets/Amla.jpg",
+                thumbnails: ["../assets/amla1.jpg", "../assets/amla2.jpg", "../assets/amla.jpg"]
+            },
+            apple: {
+                name: "Organic Apple",
+                description: "Juicy and sweet organic apples",
+                price: "₹199.99",
+                image: "../assets/apple.jpg",
+                thumbnails: ["../assets/apple1.jpg", "../assets/apple2.jpeg", "../assets/apple3.jpeg"]
+            },
+            bathua: {
+                name: "Organic Bathua",
+                description: "Fresh and healthy organic bathua leaves.",
+                price: "₹29.99",
+                image: "../assets/bathua.jpg",
+                thumbnails: ["../assets/bathua.jpg", "../assets/bathua.jpg", "../assets/bathua.jpg"]
+            },
+            beetroot: {
+                name: "Organic Beetroot",
+                description: "Rich in iron and antioxidants, fresh organic beetroot.",
+                price: "₹59.99",
+                image: "../assets/beetroot.jpg",
+                thumbnails: ["../assets/beetroot1.jpg", "../assets/beetroot2.jpg", "../assets/beetroot.jpg"]
+            },
+            bitter_gourd : {
+                name: "Organic Bitter Gourd",
+                description: "Fresh and naturally grown organic bitter gourd.",
+                price: "₹44.99",
+                image: "../assets/bitter-gourd.jpg",
+                thumbnails: ["../assets/bitter-gourd1.webp", "../assets/bitter-gourd2.jpg", "../assets/bitter-gourd3.jpg"]
+            },
+            carrot: {
+                name: "Organic Carrot",
+                description: "Crunchy and sweet organic carrots.",
+                price: "₹49.99",
+                image: "../assets/carrot.jpg",
+                thumbnails: ["../assets/carrot1.jpg", "../assets/carrot2.jpg", "../assets/carrot3.jpeg"]
+            },
+            capsicum: {
+                name: "Organic Capsicum",
+                description: "Fresh and vibrant organic capsicum.",
+                price: "₹79.99",
+                image: "../assets/capsicum.jpg",
+                thumbnails: ["../assets/capsicum1.jpg", "../assets/capsicum2.jpg", "../assets/capsicum3.jpg"]
+            },
+            cauliflower: {
+                name: "Organic Cauliflower",
+                description: "Pure and fresh organic cauliflower.",
+                price: "₹39.99",
+                image: "../assets/cauliflower.jpg",
+                thumbnails: ["../assets/cauliflower1.jpg", "../assets/cauliflower2.jpg", "../assets/cauliflower3.jpg"]
+            },
+            coriander: {
+                name: "Fresh Coriander",
+                description: "Aromatic and fresh coriander leaves for your kitchen.",
+                price: "₹4.99",
+                image: "../assets/coriander.jpg",
+                thumbnails: ["../assets/coriander1.jpeg", "../assets/Coriander2.jpeg", "../assets/coriander.jpg"]
+            },
+            strawberry: {
+                name: "Juicy Strawberry",
+                description: "Sweet and juicy strawberries packed with flavor.",
+                price: "₹20.99",
+                image: "../assets/strawberry.jpg",
+                thumbnails: ["../assets/strawberry1.jpg", "../assets/strawberry2.jpg", "../assets/strawberry.jpg"]
+            },
+            grapes : {
+                name: "Fresh Grapes",
+                description: "Delicious and fresh grapes, perfect for snacking.",
+                price: "₹15.99",
+                image: "../assets/grapes.jpg",
+                thumbnails: ["../assets/grapes1.jpg", "../assets/grapes2.jpg", "../assets/grapes.jpg"]
+            },
+            guava: {
+                name: "Organic Guava",
+                description: "Naturally ripened guavas full of nutrients.",
+                price: "₹12.99",
+                image: "../assets/guava.jpg",
+                thumbnails: ["../assets/guava1.jpg", "../assets/guava2.jpg", "../assets/guava.jpg"]
+            },
+            jackfruit: {
+                name: "Ripe Jackfruit",
+                description: "Exotic and nutritious jackfruit, great for cooking.",
+                price: "₹30.99",
+                image: "../assets/jackfruit.jpg",
+                thumbnails: ["../assets/jackfruit1.jpeg", "../assets/jackfruit2.jpg", "../assets/jackfruit3.jpg"]
+            },
+            kinnow : {
+                name: "Fresh Kinnow",
+                description: "Citrusy and refreshing kinnow oranges.",
+                price: "₹10.99",
+                image: "../assets/kinnow.jpg",
+                thumbnails: ["../assets/kinnow1.jpg", "../assets/kinnow2.jpeg", "../assets/kinnow3.png"]
+            },
+            kiwi: {
+                name: "Exotic Kiwi",
+                description: "Tangy and sweet kiwi packed with vitamins.",
+                price: "₹25.99",
+                image: "../assets/kiwi.jpg",
+                thumbnails: ["../assets/kiwi1.jpg", "../assets/kiwi2.jpg", "../assets/kiwi3.jpg"]
+            },
+            lagenaria_siceraria : {
+                name: "Fresh Lagenaria Siceraria ",
+                description: "Healthy and nutritious bottle gourd for your meals.",
+                price: "₹8.99",
+                image: "../assets/lagenaria-siceraria.jpg",
+                thumbnails: ["../assets/lagenaria-siceraria.jpg", "../assets/lagenaria-siceraria.jpg", "../assets/lagenaria-siceraria.jpg"]
+            },
+            litchi : {
+                name: "Sweet Litchi",
+                description: "Delightful and juicy litchis for a refreshing taste.",
+                price: "₹18.99",
+                image: "../assets/litchi.jpg",
+                thumbnails: ["../assets/litchi1.jpg", "../assets/litchi2.jpg", "../assets/litchi.jpg"]
+            },
+            mint: {
+                name: "Fresh Mint Leaves",
+                description: "Aromatic and fresh mint leaves for garnishing.",
+                price: "₹6.99",
+                image: "../assets/mint.jpg",
+                thumbnails: ["../assets/mint1.jpeg", "../assets/mint2.jpeg", "../assets/mint.jpg"]
+            }
+        };
+    
+        // Fetch the product from URL (e.g., ?product=peas)
+        const productId = getQueryParam('product');
+    
+        if (productId && products[productId]) {
+            const product = products[productId];
+            // Update product details dynamically
+            document.getElementById('productName').innerText = product.name;
+            document.getElementById('productPrice').innerText = product.price;
+            document.getElementById('productDescription').innerText = product.description;
+            document.getElementById('mainImage').src = product.image;
+    
+            // Update thumbnails
+      const thumbnails = document.querySelectorAll('.thumbnail-images img');
+      thumbnails.forEach((thumbnail, index) => {
+        thumbnail.src = product.thumbnails[index];
+      });
+    } else {
+      alert("Product not found!");
+    }
+
+    // When a thumbnail is clicked, update the main image source
+    function changeImage(thumbnail) {
+      document.getElementById('mainImage').src = thumbnail.src;
+    }
+
+    
+        function addToCart() {
+    const productName = document.getElementById('productName').innerText;
+    const productPrice = parseFloat(document.getElementById('productPrice').innerText.replace('₹', ''));
+    const quantity = parseInt(document.getElementById('quantity').value);
+
+    const cartItem = {
+        name: productName,
+        price: productPrice,
+        quantity: quantity
+    };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(cartItem);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Display a message instead of an alert
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    messageDiv.innerHTML = `<p>Product added to cart successfully! You will be redirected to Featured Products.</p>`;
+    document.body.appendChild(messageDiv);
+
+    // Redirect to the FeaturedProduct.html page 
+    setTimeout(function() {
+        window.location.href = 'FeaturedProducts.html';
+    }, 10);
+}
+
+    
+        // Function to get query parameter by name
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+    </script>
+    
+</body>
+</html>

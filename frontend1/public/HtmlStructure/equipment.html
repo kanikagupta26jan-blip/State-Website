@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Equipment - AgroMart</title>
+    <link rel="stylesheet" href="../CSS/Equipment.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+</head>
+<body>
+
+   <!-- Header Section -->
+   <header class="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/main_logo.png" alt="AgroTech Logo">
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="nav">
+        <ul>
+          <li><a href="../HtmlStructure/home.html">Home</a></li>
+          <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+      <li class="submenu">
+        <a href="../HtmlStructure/services.html">Services</a>
+        <ul class="submenu-list">
+          <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+          <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+          <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+          <li><a href="#blogs">Blogs & Tutorials</a></li>
+        </ul>
+    </li>
+    <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+    <li><a href="../HtmlStructure/expert.html">Expert Opinion</a></li>
+  </ul>
+</nav>
+
+      <!-- Language Switcher and Login/Sign Up -->
+      <div class="header-actions">
+        <select class="language-switcher">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ta">Tamil</option>
+          <option value="kn">Kannada</option>
+        </select>
+        <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+        <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+    <!-- Equipment Details Section -->
+    <section class="equipment-details">
+      <div class="container">
+          <div class="equipment-main">
+              <div class="equipment-gallery">
+                  <div class="image-thumbnails">
+                      <img src="" alt="Equipment" id="mainImage">
+                      <div class="thumbnail-images">
+                          <img src="" alt="Thumbnail 1" onclick="changeImage(this)">
+                          <img src="" alt="Thumbnail 2" onclick="changeImage(this)">
+                          <img src="" alt="Thumbnail 3" onclick="changeImage(this)">
+                      </div>
+                  </div>
+              </div>
+              <div class="equipment-info">
+                  <h1 id="equipmentName">Equipment Name</h1>
+                  <div class="equipment-rating">
+                      <span class="rating-stars">★★★★★</span>
+                      <span class="rating-count">(120 reviews)</span>
+                  </div>
+                  <p class="equipment-price" id="equipmentPrice">$0.00</p>
+                  <p class="equipment-description" id="equipmentDescription">
+                      Description will appear here.
+                  </p>
+                  <div class="equipment-quantity">
+                      <label for="quantity">Quantity: </label>
+                      <input type="number" id="quantity" value="1" min="1" max="10">
+                  </div>
+                  <button class="add-to-cart" onclick="addToCart()">Rent Now</button>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links Section -->
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+  
+        <!-- Social Media Section -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+          </ul>
+        </div>
+  
+        <!-- Newsletter Subscription -->
+        <div class="footer-newsletter">
+          <h3>Subscribe to Our Newsletter</h3>
+          <p>Stay updated with the latest news, tips, and offers from AgroTech!</p>
+          <form action="#" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="cta-button primary-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p>&copy; 2024 AgroTech. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../scripts/speak.js"></script>
+      <script>
+        // Equipment data for dynamic content
+        const equipment = {
+            Tractor_X100: {
+                name: "Tractor X100",
+                description: "Advanced tractor for modern farming.",
+                price: "₹3,000/day",
+                image: "../assets/tractor_x100.jpg",
+                thumbnails: ["../assets/tractor_100_1.jpg", "../assets/tractor_x100_2.jpg", "../assets/tractor_x100_3.jpg"]
+            },
+            automatic_harvester: {
+                name: "Automatic_Harvester",
+                description: "Efficient harvesting tool.",
+                price: "₹5,000/day",
+                image: "../assets/automatic_harvestor.jpg",
+                thumbnails: ["../assets/automatic_harvestor_2.jpg", "../assets/automatic_harvestor.jpg", "../assets/automatic_harvestor_2.jpg"]
+            },
+            seed_drill_pro: {
+                name: "Seed_Drill_Pro",
+                description: "Precise seed planting tool.",
+                price: "₹1,000/day",
+                image: "../assets/seed_drill.jpg",
+                thumbnails: ["../assets/seed_drill_1.jpg", "../assets/seed_drill.jpg", "../assets/seed_drill_1.jpg"]
+            },
+            irrigation_system: {
+                name: "Irrigation_System_2",
+                description: "Smart water management system.",
+                price: "₹3,000/day",
+                image: "../assets/irrigation_1.jpg",
+                thumbnails: ["../assets/irrigation_1.jpg", "../assets/irrigation_1.jpg", "../assets/irrigation_1.jpg"]
+            },
+            soil_tester_pro: {
+                name: "Soil_Tester_Pro",
+                description: "Analyze soil quality efficiently.",
+                price: " ₹2,000/day",
+                image: "../assets/soil_tester.jpg",
+                thumbnails: ["../assets/soil_tester_1.jpg", "../assets/soil_tester_2.jpg", "../assets/soil_tester.jpg"]
+            },
+            plowing_machine_x200: {
+                name: "Plowing_Machine_X200",
+                description: "High-performance plowing machine for large farms.",
+                price: " ₹9,800/day",
+                image: "../assets/plowing_machine_x200.jpg",
+                thumbnails: ["../assets/plowing_machine_x200_1.jpg", "../assets/plowing_machine_x200_2.jpg", "../assets/plowing_machine_x200.jpg"]
+            },
+            multi_crop_thresher: {
+                name: "Multi_Crop_Thresher",
+                description: "Efficient multi-crop threshing for various grains.",
+                price: "₹6,500/day",
+                image: "../assets/multi_crop_thresher.jpg",
+                thumbnails: ["../assets/multi_crop_thresher_1.jpg", "../assets/multi_crop_thresher_2.jpg", "../assets/multi_crop_thresher.jpg"]
+            },
+            mini_rice_mill: {
+                name: "Mini_Rice_Mill",
+                description: "Compact rice milling solution for small-scale farms.",
+                price: "₹2,800/day",
+                image: "../assets/mini_rice_mill.jpg",
+                thumbnails: ["../assets/mini_rice_mill_1.jpg", "../assets/mini_rice_mill_2.jpeg", "../assets/mini_rice_mill.jpg"]
+            },
+            solar_water_pump: {
+                name: "Solar_Water_Pump",
+                description: "Eco-friendly solar-powered water pump for irrigation.",
+                price: "₹1,200/day",
+                image: "../assets/solar_water_pump.jpg",
+                thumbnails: ["../assets/solar_water_pump_1.jpg", "../assets/solar_water_pump_2.png", "../assets/solar_water_pump_3.jpg"]
+            },
+            automatic_sprayer_drone: {
+                name: "Automatic_Sprayer_Drone",
+                description: "Automated drone for precision pesticide spraying.",
+                price: "₹3,500/day",
+                image: "../assets/automatic_sprayer_drone.jpeg",
+                thumbnails: ["../assets/automatic_sprayer_drone_1.jpg", "../assets/automatic_sprayer_drone_2.jpg", "../assets/automatic_sprayer_drone_3.jpg"]
+            },
+            
+            hydraulic_trolley: {
+                name: "Hydraulic_Trolley",
+                description: "Heavy-duty hydraulic trolley for farm transport.",
+                price: "₹1,850/day",
+                image: "../assets/hydraulic_trolley.jpg",
+                thumbnails: ["../assets/hydraulic_trolley_1.jpg", "../assets/hydraulic_trolley_2.png", "../assets/hydraulic_trolley.jpg"]
+            },
+            crop_protection_boom_sprayer: {
+                name: "Crop_Protection_Boom_Sprayer",
+                description: "Large-scale crop protection sprayer for farms.",
+                price: "₹9,500/day",
+                image: "../assets/crop_protection_boom_sprayer.jpg",
+                thumbnails: ["../assets/crop_protection_boom_sprayer_1.png", "../assets/crop_protection_boom_sprayer_2.jpg", "../assets/crop_protection_boom_sprayer.jpg"]
+            },
+            fertilizer_spreader: {
+                name: "Fertilizer_Spreader",
+                description: "Efficient machine for even fertilizer distribution.",
+                price: "₹7,500/day",
+                image: "../assets/fertilizer_spreader.jpg",
+                thumbnails: ["../assets/fertilizer_spreader_1.jpg", "../assets/fertilizer_spreader.jpg", "../assets/fertilizer_spreader.jpg"]
+            },
+            chaff_cutter: {
+                name: "Chaff_Cutter",
+                description: "High-speed chaff cutter for animal fodder.",
+                price: "₹4,000/day",
+                image: "../assets/chaff_cutter.jpg",
+                thumbnails: ["../assets/chaff_cutter_1.jpg", "../assets/chaff_cutter_2.png", "../assets/chaff_cutter.jpg"]
+            },
+            silage_packing_machine: {
+                name: "Silage_Packing_Machine",
+                description: "Machine for efficient silage packaging and storage.",
+                price: "₹2,100/day",
+                image: "../assets/silage_packing.jpg",
+                thumbnails: ["../assets/silage_packing_1.jpg", "../assets/silage_packing_2.jpg", "../assets/silage_packing.jpg"]
+            },
+            paddy_transplanter: {
+                name: "Paddy_Transplanter",
+                description: "Automated paddy transplanting machine.",
+                price: "₹1,450/day",
+                image: "../assets/paddy_transplanter_.png",
+                thumbnails: ["../assets/paddy_transplanter_1.jpg", "../assets/paddy_transplanter_2.png", "../assets/paddy_transplanter_.png"]
+            }
+        };
+    
+        // Fetch the equipment from URL (e.g., ?equipment=tractor)
+        const equipmentId = getQueryParam('equipment');
+    
+        if (equipmentId && equipment[equipmentId]) {
+            const equip = equipment[equipmentId];
+            // Update equipment details dynamically
+            document.getElementById('equipmentName').innerText = equip.name;
+            document.getElementById('equipmentPrice').innerText = equip.price;
+            document.getElementById('equipmentDescription').innerText = equip.description;
+            document.getElementById('mainImage').src = equip.image;
+    
+            // Update thumbnails
+            const thumbnails = document.querySelectorAll('.thumbnail-images img');
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.src = equip.thumbnails[index];
+            });
+        } else {
+            alert("Equipment not found!");
+        }
+    
+          // When a thumbnail is clicked, update the main image source
+    function changeImage(thumbnail) {
+      document.getElementById('mainImage').src = thumbnail.src;
+    }
+
+    function addToCart() {
+    const equipmentName = document.getElementById('equipmentName').innerText;
+    let priceText = document.getElementById('equipmentPrice').innerText;
+    // Remove non-digit characters (including commas, ₹, and /day text)
+    priceText = priceText.replace(/[^0-9.]/g, '');
+    const equipmentPrice = parseFloat(priceText);
+    const quantity = parseInt(document.getElementById('quantity').value);
+
+    const cartItem = {
+        name: equipmentName,
+        price: equipmentPrice,
+        quantity: quantity,
+        type: 'equipment'  // Optional: helps to distinguish equipment from products
+    };
+
+    // Optionally, if you want to store equipment items separately, use a different key:
+    let equipmentCart = JSON.parse(localStorage.getItem('equipmentCart')) || [];
+    equipmentCart.push(cartItem);
+    localStorage.setItem('equipmentCart', JSON.stringify(equipmentCart));
+
+    // Display a message instead of an alert
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    messageDiv.innerHTML = `<p>Equipment rented successfully! Redirecting...</p>`;
+    document.body.appendChild(messageDiv);
+
+    // Redirect to FeaturedEquipments.html (ensure the filename matches exactly)
+    setTimeout(function() {
+        window.location.href = 'featuredEquipment.html';
+    }, 10);
+}
+
+    
+        // Function to get query parameter by name
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+    </script>
+    
+</body>
+</html>

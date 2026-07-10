@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Your Equipment - AgroMart</title>
+    <link rel="stylesheet" href="../CSS/ListEquipment.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+</head>
+<body>
+   <!-- Header Section -->
+   <header class="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/main_logo.png" alt="AgroTech Logo">
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="nav">
+        <ul>
+          <li><a href="../HtmlStructure/home.html">Home</a></li>
+          <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+      <li class="submenu">
+        <a href="../HtmlStructure/services.html">Services</a>
+        <ul class="submenu-list">
+          <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+          <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+          <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+          <li><a href="#blogs">Blogs & Tutorials</a></li>
+        </ul>
+    </li>
+    <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+    <li><a href="../HtmlStructure/JoinCommunity.html">Expert Opinion</a></li>
+  </ul>
+</nav>
+
+      <!-- Language Switcher and Login/Sign Up -->
+      <div class="header-actions">
+        <select class="language-switcher">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ta">Tamil</option>
+          <option value="kn">Kannada</option>
+        </select>
+        <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+        <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+    <!-- Rent Equipment Form -->
+    <section class="rent-equipment">
+        <div class="container">
+            <h2>List Your Equipment for Rent</h2>
+            <form id="equipment-form">
+                <!-- User Information -->
+                <div class="form-group">
+                    <label for="user_id">Your User ID</label>
+                    <input type="number" id="user_id" name="user_id" required placeholder="Enter your user ID">
+                </div>
+
+                <!-- Equipment Details -->
+                <div class="form-group">
+                    <label for="equipment_name">Equipment Name</label>
+                    <input type="text" id="equipment_name" name="equipment_name" required placeholder="Enter equipment name">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" required placeholder="Provide a detailed description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required placeholder="Enter location">
+                </div>
+                <div class="form-group">
+                    <label for="rental_price">Rental Price (per day)</label>
+                    <input type="number" id="rental_price" name="rental_price" required placeholder="Enter rental price">
+                </div>
+
+                <!-- Upload Images -->
+                <div class="form-group">
+                    <label for="images">Upload Equipment Images</label>
+                    <input type="file" id="images" name="images" accept="image/*" multiple required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">List Equipment</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <!-- Quick Links Section -->
+            <div class="footer-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#terms">Terms & Conditions</a></li>
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+              </ul>
+            </div>
+      
+            <!-- Social Media Section -->
+            <div class="footer-social">
+              <h3>Follow Us</h3>
+              <ul>
+                <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+              </ul>
+            </div>
+      
+            <!-- Newsletter Subscription -->
+            <div class="footer-newsletter">
+              <h3>Subscribe to Our Newsletter</h3>
+              <p>Stay updated with the latest news, tips, and offers from AgroTech!</p>
+              <form action="#" method="post">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="cta-button primary-btn">Subscribe</button>
+              </form>
+            </div>
+          </div>
+      
+          <div class="footer-bottom">
+            <p>&copy; 2024 AgroTech. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+      <script src="../scripts/speak.js"></script>
+    <script>
+        document.getElementById('equipment-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Collect form data
+            const formData = new FormData(event.target);
+
+            try {
+                // Send form data to backend
+                const response = await fetch('http://localhost:5000/add-equipment', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('Your equipment has been listed successfully!');
+                    event.target.reset();
+                } else {
+                    alert('Failed to list your equipment. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

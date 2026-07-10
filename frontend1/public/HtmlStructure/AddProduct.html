@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - AgroMart</title>
+    <link rel="stylesheet" href="../CSS/AddProduct.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+    <style>
+        /* Message Box Styles */
+        #statusMessage {
+            display: none; /* Initially hidden */
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Additional styles for the confirmation box */
+        .confirmation-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .confirmation-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cancel-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add Product</h1>
+        <p>Fill in the details below to add your product to AgroTech.</p>
+        
+        <!-- Status message box will appear here -->
+        <div id="statusMessage" class="success-message"></div>
+
+        <!-- Confirmation prompt box will appear here -->
+        <div id="confirmationBox" class="confirmation-box" style="display: none;">
+            <p>Would you like to add another product?</p>
+            <button class="confirmation-button" onclick="addMoreProducts()">Yes</button>
+            <button class="cancel-button" onclick="goToHome()">No</button>
+        </div>
+
+        <!-- Form for adding product -->
+        <form id="addProductForm" enctype="multipart/form-data">
+            <!-- Hidden input for Farmer ID -->
+            <input type="hidden" name="user_id" value="">
+            <div class="form-group">
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" name="product-name" placeholder="Enter product name" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="product-description">Product Description</label>
+                <textarea id="product-description" name="product-description" placeholder="Enter a brief description" required></textarea>
+            </div>
+        
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="e.g., 100 kg" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="price">Price (per unit)</label>
+                    <input type="number" id="price" name="price" placeholder="e.g., 50" required>
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="grains">Grains</option>
+                    <option value="dairy">Dairy Products</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="product-image">Product Image</label>
+                <input type="file" id="product-image" name="product-image" accept="image/*" required>
+            </div>
+        
+            <button type="submit" id="addProductButton" class="cta-button">Add Product</button>
+        </form>
+    </div>
+
+    <script>
+        // Ensure the user is logged in before accessing the product page
+        const user_id = localStorage.getItem('user_id');
+        if (!user_id) {
+            window.location.href = 'login.html';  // Redirect to login page if not logged in
+        }
+
+        // Handle form submission and simulate adding a product
+        document.querySelector('#addProductForm').addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent the form from submitting to the server
+            
+            const statusMessage = document.querySelector('#statusMessage');
+            
+            // Simulate adding a product (no backend request)
+            setTimeout(() => {
+                statusMessage.textContent = 'Product added successfully!';
+                statusMessage.classList.remove('error-message');
+                statusMessage.classList.add('success-message');
+                statusMessage.style.display = 'block';  // Show the status message box
+
+                // Show confirmation prompt to add more products or go to home
+                showConfirmationPrompt();
+            }, 1000);  // Simulate a short delay before showing success
+        });
+
+        // Function to show the confirmation prompt
+        function showConfirmationPrompt() {
+            const confirmationBox = document.querySelector('#confirmationBox');
+            confirmationBox.style.display = 'block'; // Display confirmation box
+        }
+
+        // If user clicks "Yes", reset the form and keep them on the page
+        function addMoreProducts() {
+            document.querySelector('#addProductForm').reset();  // Reset the form
+            document.querySelector('#statusMessage').style.display = 'none';  // Hide the status message
+            document.querySelector('#confirmationBox').style.display = 'none'; // Hide the confirmation box
+        }
+
+        // If user clicks "No", redirect them to Home page
+        function goToHome() {
+            window.location.href = '/HtmlStructure/Home.html';  // Redirect to Home page
+        }
+    </script>
+</body>
+</html>

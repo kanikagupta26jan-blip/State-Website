@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Now - AgroMart</title>
+    <link rel="stylesheet" href="../CSS/FeaturedProducts.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-container">
+          <!-- Logo -->
+          <div class="logo">
+            <img src="../assets/main_logo.png" alt="AgroTech Logo">
+          </div>
+    
+          <!-- Navigation Menu -->
+          <nav class="nav">
+            <ul>
+              <li><a href="../HtmlStructure/home.html">Home</a></li>
+              <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+          <li class="submenu">
+            <a href="../HtmlStructure/services.html">Services</a>
+            <ul class="submenu-list">
+              <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+              <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+              <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+              <li><a href="#blogs">Blogs & Tutorials</a></li>
+            </ul>
+        </li>
+        <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+        <li><a href="../HtmlStructure/expert.html">Expert Opinion</a></li>
+      </ul>
+    </nav>
+    
+          <!-- Language Switcher and Login/Sign Up -->
+          <div class="header-actions">
+            <select class="language-switcher">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="ta">Tamil</option>
+              <option value="kn">Kannada</option>
+            </select>
+            <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+            <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+          </div>
+        </div>
+      </header>
+
+    <!-- Products Page -->
+    <section class="products-page">
+        <div class="container">
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for products..." class="search-input">
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+
+                <!-- Product Cards (30+ Products) -->
+<div class="product-card" data-product="peas" data-name="Organic Peas" data-description="Fresh and organic peas" data-price="34.99" data-image="peas.jpg">
+    <a href="product.html?product=peas" class="product-link">
+        <img src="../assets/peas.jpg" alt="Peas">
+        <h3>Organic Peas</h3>
+        <p>₹34.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="cabbage" data-name="Organic Cabbage" data-description="Fresh and nutritious organic cabbage" data-price="39.99" data-image="cabbage.jpg">
+    <a href="product.html?product=cabbage" class="product-link">
+        <img src="../assets/cabbage.jpg" alt="Cabbage">
+        <h3>Organic Cabbage</h3>
+        <p>₹39.99</p>
+    </a>
+</div>
+
+
+
+<div class="product-card" data-product="amla" data-name="Organic Amla" data-description="Rich in vitamin C, fresh organic amla" data-price="49.99" data-image="amla.jpg">
+    <a href="product.html?product=amla" class="product-link">
+        <img src="../assets/amla.jpg" alt="Amla">
+        <h3>Organic Amla</h3>
+        <p>₹49.99</p>
+    </a>
+</div>
+
+
+
+<div class="product-card" data-product="apple" data-name="Organic Apple" data-description="Juicy and sweet organic apples" data-price="199.99" data-image="apple.jpg">
+    <a href="product.html?product=apple" class="product-link">
+        <img src="../assets/apple.jpg" alt="Apple">
+        <h3>Organic Apple</h3>
+        <p>₹199.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="bathua" data-name="Organic Bathua" data-description="Fresh and healthy organic bathua leaves" data-price="29.99" data-image="bathua.jpg">
+    <a href="product.html?product=bathua" class="product-link">
+        <img src="../assets/bathua.jpg" alt="Bathua">
+        <h3>Organic Bathua</h3>
+        <p>₹29.99</p>
+    </a>
+</div>
+
+<div class="product-card" data-product="beetroot" data-name="Organic Beetroot" data-description="Rich in iron and antioxidants, fresh organic beetroot" data-price="59.99" data-image="beetroot.jpg">
+    <a href="product.html?product=beetroot" class="product-link">
+        <img src="../assets/beetroot.jpg" alt="Beetroot">
+        <h3>Organic Beetroot</h3>
+        <p>₹59.99</p>
+    </a>
+</div>
+
+<div class="product-card" data-product="bitter_gourd" data-name="Organic Bitter Gourd" data-description="Fresh and naturally grown organic bitter gourd" data-price="44.99" data-image="bitter-gourd.jpg">
+    <a href="product.html?product=bitter-gourd" class="product-link">
+        <img src="../assets/bitter-gourd.jpg" alt="Bitter Gourd">
+        <h3>Organic Bitter Gourd</h3>
+        <p>₹44.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="carrot" data-name="Organic Carrot" data-description="Crunchy and sweet organic carrots" data-price="49.99" data-image="carrot.jpg">
+    <a href="product.html?product=carrot" class="product-link">
+        <img src="../assets/carrot.jpg" alt="Carrot">
+        <h3>Organic Carrot</h3>
+        <p>₹49.99</p>
+    </a>
+</div>
+
+<div class="product-card" data-product="capsicum" data-name="Organic Capsicum" data-description="Fresh and vibrant organic capsicum" data-price="79.99" data-image="capsicum.jpg">
+    <a href="product.html?product=capsicum" class="product-link">
+        <img src="../assets/capsicum.jpg" alt="Capsicum">
+        <h3>Organic Capsicum</h3>
+        <p>₹79.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="cauliflower" data-name="Organic Cauliflower" data-description="Pure and fresh organic cauliflower" data-price="39.99" data-image="cauliflower.jpg">
+    <a href="product.html?product=cauliflower" class="product-link">
+        <img src="../assets/cauliflower.jpg" alt="Cauliflower">
+        <h3>Organic Cauliflower</h3>
+        <p>₹39.99</p>
+    </a>
+</div>
+
+<div class="product-card" data-product="coriander" data-name="Fresh Coriander" data-description="Aromatic and fresh coriander leaves for your kitchen" data-price="₹4.99" data-image="coriander.jpg">
+    <a href="product.html?product=coriander" class="product-link">
+        <img src="../assets/coriander.jpg" alt="Coriander">
+        <h3>Fresh Coriander</h3>
+        <p>₹4.99</p>
+    </a>
+</div>
+
+
+
+<div class="product-card" data-product="strawberry" data-name="Juicy Strawberries" data-description="Sweet and juicy strawberries packed with flavor" data-price="₹20.99" data-image="strawberry.jpg">
+    <a href="product.html?product=strawberry" class="product-link">
+        <img src="../assets/strawberry.jpg" alt="Strawberry">
+        <h3>Juicy Strawberries</h3>
+        <p>₹20.99</p>
+    </a>
+</div>
+
+
+
+<div class="product-card" data-product="grapes" data-name="Fresh Grapes" data-description="Delicious and fresh grapes, perfect for snacking" data-price="₹15.99" data-image="grapes.jpg">
+    <a href="product.html?product=grapes" class="product-link">
+        <img src="../assets/grapes.jpg" alt="Grapes">
+        <h3>Fresh Grapes</h3>
+        <p>₹15.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="guava" data-name="Organic Guava" data-description="Naturally ripened guavas full of nutrients" data-price="₹12.99" data-image="guava.jpg">
+    <a href="product.html?product=guava" class="product-link">
+        <img src="../assets/guava.jpg" alt="Guava">
+        <h3>Organic Guava</h3>
+        <p>₹12.99</p>
+    </a>
+</div>
+
+<div class="product-card" data-product="jackfruit" data-name="Ripe Jackfruit" data-description="Exotic and nutritious jackfruit, great for cooking" data-price="₹30.99" data-image="jackfruit.jpg">
+    <a href="product.html?product=jackfruit" class="product-link">
+        <img src="../assets/jackfruit.jpg" alt="Jackfruit">
+        <h3>Ripe Jackfruit</h3>
+        <p>₹30.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="kinnow" data-name="Fresh Kinnow" data-description="Citrusy and refreshing kinnow oranges" data-price="₹10.99" data-image="kinnow.jpg">
+    <a href="product.html?product=kinnow" class="product-link">
+        <img src="../assets/kinnow.jpg" alt="Kinnow">
+        <h3>Fresh Kinnow</h3>
+        <p>₹10.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="kiwi" data-name="Exotic Kiwi" data-description="Tangy and sweet kiwi packed with vitamins" data-price="₹25.99" data-image="kiwi.jpg">
+    <a href="product.html?product=kiwi" class="product-link">
+        <img src="../assets/kiwi.jpg" alt="Kiwi">
+        <h3>Exotic Kiwi</h3>
+        <p>₹25.99</p>
+    </a>
+</div>
+
+
+<div class="product-card" data-product="lagenaria_siceraria" data-name="Fresh Bottle Gourd" data-description="Healthy and nutritious bottle gourd for your meals" data-price="₹8.99" data-image="lagenaria-siceraria.jpg">
+    <a href="product.html?product=lagenaria-siceraria" class="product-link">
+        <img src="../assets/lagenaria-siceraria.jpg" alt="Bottle Gourd">
+        <h3>Fresh Bottle Gourd</h3>
+        <p>₹8.99</p>
+    </a>
+</div>
+
+<div class="product-card" data-product="litchi" data-name="Sweet Litchi" data-description="Delightful and juicy litchis for a refreshing taste" data-price="₹18.99" data-image="litchi.jpg">
+    <a href="product.html?product=litchi" class="product-link">
+        <img src="../assets/litchi.jpg" alt="Litchi">
+        <h3>Sweet Litchi</h3>
+        <p>₹18.99</p>
+    </a>
+</div>
+
+<div class="product-card" data-product="mint" data-name="Fresh Mint Leaves" data-description="Aromatic and fresh mint leaves for garnishing" data-price="₹6.99" data-image="mint.jpg">
+    <a href="product.html?product=mint" class="product-link">
+        <img src="../assets/mint.jpg" alt="Mint">
+        <h3>Fresh Mint Leaves</h3>
+        <p>₹6.99</p>
+    </a>
+</div>
+
+               
+            </div>
+
+    </section>
+
+    <!-- Fixed "Go to Cart" Button -->
+<a href="addtocart.html" id="goToCartButton" class="go-to-cart-btn">Go to Cart</a>
+
+
+<footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links Section -->
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+  
+        <!-- Social Media Section -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+          </ul>
+        </div>
+  
+        <!-- Newsletter Subscription -->
+        <div class="footer-newsletter">
+          <h3>Subscribe to Our Newsletter</h3>
+          <p>Stay updated with the latest news, tips, and offers from AgroTech!</p>
+          <form action="#" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="cta-button primary-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p>&copy; 2024 AgroTech. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../scripts/speak.js"></script>
+    <!-- Script for Search Functionality -->
+    <script>
+        // Search Products by Name
+        function searchProducts() {
+            let searchInput = document.getElementById("searchInput").value.toLowerCase();
+            let products = document.querySelectorAll(".product-card");
+
+            products.forEach(product => {
+                let productName = product.querySelector("h3").innerText.toLowerCase();
+                if (productName.includes(searchInput)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+        localStorage.setItem('shopOrigin', '../HtmlStructure/featuredProducts.html');
+    </script>
+
+</body>
+</html>

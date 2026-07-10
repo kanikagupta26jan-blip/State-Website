@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - AgroMart</title>
+    <link rel="stylesheet" href="../CSS/CheckOut.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+</head>
+<body>
+   <!-- Header Section -->
+   <header class="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/main_logo.png" alt="AgroTech Logo">
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="nav">
+        <ul>
+          <li><a href="../HtmlStructure/home.html">Home</a></li>
+          <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+      <li class="submenu">
+        <a href="../HtmlStructure/services.html">Services</a>
+        <ul class="submenu-list">
+          <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+          <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+          <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+          <li><a href="#blogs">Blogs & Tutorials</a></li>
+        </ul>
+    </li>
+    <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+    <li><a href="../HtmlStructure/expert.html">Expert Opinion</a></li>
+  </ul>
+</nav>
+
+      <!-- Language Switcher and Login/Sign Up -->
+      <div class="header-actions">
+        <select class="language-switcher">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ta">Tamil</option>
+          <option value="kn">Kannada</option>
+        </select>
+        <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+        <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+    <!-- Checkout Process -->
+    <section class="checkout-process">
+        <div class="container">
+            <h2>Checkout</h2>
+
+            <!-- Step 1: Shipping Address -->
+      <div id="step1" class="checkout-step">
+        <h3>1. Shipping Address</h3>
+        <form id="shipping-form">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required />
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required />
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required />
+          </div>
+          <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" required />
+          </div>
+          <div class="form-group">
+            <label for="zip">Zip Code</label>
+            <!-- Using type="number" with a min attribute to ensure numeric entry -->
+            <input type="number" id="zip" name="zip" required min="0" />
+          </div>
+          <div class="summary-actions">
+            <button class="checkout-btn" onclick="goToCheckout(event)">Proceed to Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Payment Details -->
+      <div id="step2" class="checkout-step hidden">
+        <h3>2. Payment Details</h3>
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="cardname">Name on Card</label>
+            <input type="text" id="cardname" name="cardname" required />
+          </div>
+          <div class="form-group">
+            <label for="cardnumber">Card Number</label>
+            <!-- Pattern for 13-19 digit card numbers -->
+            <input type="text" id="cardnumber" name="cardnumber" required pattern="\d{13,19}" title="Please enter a valid card number (13-19 digits)" />
+          </div>
+          <div class="form-group">
+            <label for="expiry">Expiry Date</label>
+            <input type="month" id="expiry" name="expiry" required />
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <!-- Pattern for a 3 or 4 digit CVV -->
+            <input type="text" id="cvv" name="cvv" required pattern="\d{3,4}" title="CVV must be 3 or 4 digits" />
+          </div>
+          <div class="form-actions">
+            <!-- Back button to return to shipping -->
+            <button type="button" class="back-btn" onclick="backToShipping()">Back</button>
+            <button type="button" class="next-btn" onclick="showSummaryStep(event)">Review Order</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 3: Order Summary -->
+      <div id="step3" class="checkout-step hidden">
+        <h3>3. Order Summary</h3>
+        <div class="order-summary">
+          <p><strong>Shipping to:</strong> <span id="summary-address"></span></p>
+          <p><strong>Payment Method:</strong> Card ending in <span id="summary-card"></span></p>
+          <p><strong>Total:</strong> <span id="totalPrice"></span></p>
+        </div>
+        <div class="form-actions">
+          <!-- Back button to return to payment details -->
+          <button type="button" class="back-btn" onclick="backToPayment()">Back</button>
+          <button class="checkout-btn" onclick="confirmOrder()">Place Order</button>
+        </div>
+      </div>
+
+      <!-- Order Confirmation -->
+      <div id="confirmation" class="hidden">
+        <h3>Thank you for your purchase!</h3>
+        <p>Your order has been placed successfully. You will receive a confirmation email shortly.</p>
+        <a href="" class="back-to-shop">Back to Shop</a>
+      </div>
+    </div>
+  </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <!-- Quick Links Section -->
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#terms">Terms & Conditions</a></li>
+              <li><a href="#privacy">Privacy Policy</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#faqs">FAQs</a></li>
+            </ul>
+          </div>
+    
+          <!-- Social Media Section -->
+          <div class="footer-social">
+            <h3>Follow Us</h3>
+            <ul>
+              <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+              <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+              <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+              <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+            </ul>
+          </div>
+    
+          <!-- Newsletter Subscription -->
+          <div class="footer-newsletter">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Stay updated with the latest news, tips, and offers from AgroTech!</p>
+            <form action="#" method="post">
+              <input type="email" name="email" placeholder="Enter your email" required>
+              <button type="submit" class="cta-button primary-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+    
+        <div class="footer-bottom">
+          <p>&copy; 2024 AgroTech. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../scripts/speak.js"></script>
+      <script>
+       
+       window.onload = function() {
+        const totalPrice = localStorage.getItem('totalPrice') || "0.00";
+        document.getElementById('totalPrice').innerText = totalPrice;
+    };
+
+        function goToCheckout() {
+    event.preventDefault(); // Prevent the page from reloading
+    const fullname = document.getElementById('fullname').value;
+    const address = document.getElementById('address').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const zip = document.getElementById('zip').value;
+
+    // Save data in local storage
+    localStorage.setItem('fullname', fullname);
+    localStorage.setItem('address', address);
+    localStorage.setItem('city', city);
+    localStorage.setItem('state', state);
+    localStorage.setItem('zip', zip);
+
+    document.getElementById('step1').classList.add('hidden'); // Hide Step 1
+    document.getElementById('step2').classList.remove('hidden'); // Show Step 2
+
+}
+
+function showSummaryStep(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Retrieve data from localStorage
+    document.getElementById('summary-address').innerText = 
+        localStorage.getItem('fullname') + ", " +
+        localStorage.getItem('address') + ", " +
+        localStorage.getItem('city') + ", " +
+        localStorage.getItem('state') + " - " +
+        localStorage.getItem('zip');
+
+        document.getElementById('summary-card').innerText = 
+    document.getElementById('expiry').value;
+
+    // Hide Step 2, Show Step 3
+    document.getElementById('step2').classList.add('hidden');
+    document.getElementById('step3').classList.remove('hidden');
+}
+
+
+function confirmOrder() {
+    // Optionally clear cart data if you want to empty the cart after order placement
+    // localStorage.removeItem('cart');
+    // localStorage.removeItem('equipmentCart');
+    // localStorage.removeItem('totalPrice');
+
+    // Hide the Order Summary section (Step 3)
+    document.getElementById('step3').classList.add('hidden');
+
+    // Show the Order Confirmation section
+    document.getElementById('confirmation').classList.remove('hidden');
+}
+
+ // Retrieve the shop origin stored on the AddToCart page.
+    // This should be set in the respective pages (featuredEquipment.html or featuredProduct.html)
+    const shopOrigin = localStorage.getItem('shopOrigin') || '../HtmlStructure/featuredProducts.html';
+
+    // Update the "Back to Shop" link's href attribute to the stored origin
+    document.querySelector('.back-to-shop').href = shopOrigin;
+
+    function backToPayment() {
+      // Go back from Order Summary to Payment Details
+      document.getElementById('step3').classList.add('hidden');
+      document.getElementById('step2').classList.remove('hidden');
+    }
+
+    function backToShipping() {
+      // Go back from Payment Details to Shipping Address
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step1').classList.remove('hidden');
+    }
+      </script>
+      
+      
+
+</body>
+</html>

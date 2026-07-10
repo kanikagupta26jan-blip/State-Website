@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Equipment - AgroMart</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+    <link rel="stylesheet" href="../CSS/AddEquipment.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-group-inline .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+
+        .confirmation-box {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f8f4;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #555;
+            border: 1px solid #ddd;
+        }
+
+        .confirmation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .confirmation-buttons button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .confirmation-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        #statusMessage {
+            display: none;
+            text-align: center;
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Add Equipment</h1>
+        <p>Fill in the details below to list your equipment for rent on AgroTech.</p>
+
+        <!-- Status Message -->
+        <div id="statusMessage"></div>
+
+        <!-- Confirmation Box -->
+        <div id="confirmationMessage" class="confirmation-box">
+            <p>Equipment added successfully! Would you like to add more equipment?</p>
+            <div class="confirmation-buttons">
+                <button id="yesButton">Yes</button>
+                <button id="noButton">No</button>
+            </div>
+        </div>
+
+        <!-- Add Equipment Form -->
+        <form id="addEquipmentForm" action="add-equipment-form" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="user_id" value="">
+
+            <div class="form-group">
+                <label for="equipment-name">Equipment Name</label>
+                <input type="text" id="equipment-name" name="equipment-name" placeholder="Enter equipment name" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="equipment-description">Equipment Description</label>
+                <textarea id="equipment-description" name="equipment-description" placeholder="Enter a brief description" required></textarea>
+            </div>
+        
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="e.g., 2 units" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="price">Price (per day)</label>
+                    <input type="number" id="price" name="price" placeholder="e.g., 500" required>
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="tractors">Tractors</option>
+                    <option value="ploughs">Ploughs</option>
+                    <option value="seeders">Seeders</option>
+                    <option value="harvesters">Harvesters</option>
+                    <option value="sprayers">Sprayers</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="equipment-image">Equipment Image</label>
+                <input type="file" id="equipment-image" name="equipment-image" accept="image/*" required>
+            </div>
+        
+            <button type="submit" class="cta-button">Add Equipment</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+
+                // Log form data for debugging purposes
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+
+                // Simulate a successful form submission (replace with real backend request)
+                setTimeout(() => {
+                    document.getElementById('confirmationMessage').style.display = 'block';
+                    form.reset(); // Clear the form fields
+                }, 1000);
+            });
+
+            document.getElementById('yesButton').addEventListener('click', function () {
+                // Hide the confirmation message and keep the user on the same page
+                document.getElementById('confirmationMessage').style.display = 'none';
+            });
+
+            document.getElementById('noButton').addEventListener('click', function () {
+                // Redirect to the home page
+                window.location.href = '../HtmlStructure/Home.html';  // Redirect to Home page
+            });
+        });
+    </script>
+
+</body>
+</html>

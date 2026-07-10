@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Equipment - AgroMart</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+    <link rel="stylesheet" href="../CSS/FeaturedEquipment.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-container">
+        <!-- Logo -->
+        <div class="logo">
+          <img src="../assets/main_logo.png" alt="AgroTech Logo">
+        </div>
+  
+        <!-- Navigation Menu -->
+        <nav class="nav">
+          <ul>
+            <li><a href="../HtmlStructure/home.html">Home</a></li>
+            <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+        <li class="submenu">
+          <a href="../HtmlStructure/services.html">Services</a>
+          <ul class="submenu-list">
+            <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+            <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+            <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+            <li><a href="#blogs">Blogs & Tutorials</a></li>
+          </ul>
+      </li>
+      <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+      <li><a href="../HtmlStructure/expert.html">Expert Opinion</a></li>
+    </ul>
+  </nav>
+  
+        <!-- Language Switcher and Login/Sign Up -->
+        <div class="header-actions">
+          <select class="language-switcher">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="ta">Tamil</option>
+            <option value="kn">Kannada</option>
+          </select>
+          <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+          <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+  <!-- Equipment Section -->
+  <section class="equipment-page">
+    <div class="container">
+      
+      <!-- Page Title -->
+      <h1>Featured Equipment</h1>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" onkeyup="searchEquipment()" placeholder="Search for equipment..." class="search-input">
+      </div>
+
+      <!-- Equipment Grid -->
+      <div class="equipment-grid" id="equipmentGrid">
+
+        <!-- Equipment Cards -->
+        <div class="equipment-card" data-name="Tractor_X100" data-description="Advanced tractor for modern farming" data-price="12000" data-image="tractor.jpg">
+          <a href="equipment.html?equipment=Tractor_X100" class="equipment-link">
+            <img src="../assets/tractor_x100.jpg" alt="Tractor X100">
+            <h3>Tractor X100</h3>
+            <p>Price: ₹6,20,000</p>
+          </a>
+        </div>
+
+        <div class="equipment-card" data-name="Automatic_Harvester" data-description="Efficient harvesting tool" data-price="8500" data-image="harvester.jpg">
+          <a href="equipment.html?equipment=automatic_harvester" class="equipment-link">
+            <img src="../assets/automatic_harvestor.jpg" alt="Automatic Harvester">
+            <h3>Automatic Harvester</h3>
+            <p>Price: ₹8,00,500</p>
+          </a>
+        </div>
+
+        <div class="equipment-card" data-name="Seed_Drill_Pro" data-description="Precise seed planting tool" data-price="5500" data-image="seed-drill.jpg">
+          <a href="equipment.html?equipment=seed_drill_pro" class="equipment-link">
+            <img src="../assets/seed_drill.jpg" alt="Seed Drill Pro">
+            <h3>Seed Drill Pro</h3>
+            <p>Price: ₹1,00,500</p>
+          </a>
+        </div>
+
+        <div class="equipment-card" data-name="Irrigation_System_2" data-description="Smart water management system" data-price="3000" data-image="irrigation.jpg">
+          <a href="equipment.html?equipment=irrigation_system" class="equipment-link">
+            <img src="../assets/irrigation.jpg" alt="Irrigation System 2.0">
+            <h3>Irrigation System 2.0</h3>
+            <p>Price: ₹3,00,000</p>
+          </a>
+        </div>
+
+        <div class="equipment-card" data-name="Soil_Tester_Pro" data-description="Analyze soil quality efficiently" data-price="2000" data-image="soil-tester.jpg">
+          <a href="equipment.html?equipment=soil_tester_pro" class="equipment-link">
+            <img src="../assets/soil_tester.jpg" alt="Soil Tester Pro">
+            <h3>Soil Tester Pro</h3>
+            <p>Price: ₹50,000</p>
+          </a>
+        </div>
+
+
+        <div class="equipment-card" data-name="Plowing_Machine_X200" data-description="High-performance plowing machine for large farms" data-price="980000" data-image="plowing-machine.jpg">
+          <a href="equipment.html?equipment=plowing_machine_x200" class="equipment-link">
+            <img src="../assets/plowing_machine_x200.jpg" alt="Plowing Machine X200">
+            <h3>Plowing Machine X200</h3>
+            <p>Price: ₹9,80,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Multi_Crop_Thresher" data-description="Efficient multi-crop threshing for various grains" data-price="650000" data-image="multi-crop-thresher.jpg">
+          <a href="equipment.html?equipment=multi_crop_thresher" class="equipment-link">
+            <img src="../assets/multi_crop_thresher.jpg" alt="Multi-Crop Thresher">
+            <h3>Multi-Crop Thresher</h3>
+            <p>Price: ₹6,50,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Mini_Rice_Mill" data-description="Compact rice milling solution for small-scale farms" data-price="280000" data-image="mini-rice-mill.jpg">
+          <a href="equipment.html?equipment=mini_rice_mill" class="equipment-link">
+            <img src="../assets/mini_rice_mill.jpg" alt="Mini Rice Mill">
+            <h3>Mini Rice Mill</h3>
+            <p>Price: ₹2,80,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Solar_Water_Pump" data-description="Eco-friendly solar-powered water pump for irrigation" data-price="120000" data-image="solar-water-pump.jpg">
+          <a href="equipment.html?equipment=solar_water_pump" class="equipment-link">
+            <img src="../assets/solar_water_pump.jpg" alt="Solar Water Pump">
+            <h3>Solar Water Pump</h3>
+            <p>Price: ₹1,20,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Automatic_Sprayer_Drone" data-description="Automated drone for precision pesticide spraying" data-price="350000" data-image="sprayer-drone.jpg">
+          <a href="equipment.html?equipment=automatic_sprayer_drone" class="equipment-link">
+            <img src="../assets/automatic_sprayer_drone.jpeg" alt="Automatic Sprayer Drone">
+            <h3>Automatic Sprayer Drone</h3>
+            <p>Price: ₹3,50,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Hydraulic_Trolley" data-description="Heavy-duty hydraulic trolley for farm transport" data-price="185000" data-image="hydraulic-trolley.jpg">
+          <a href="equipment.html?equipment=hydraulic_trolley" class="equipment-link">
+            <img src="../assets/hydraulic_trolley.jpg" alt="Hydraulic Trolley">
+            <h3>Hydraulic Trolley</h3>
+            <p>Price: ₹1,85,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Crop_Protection_Boom_Sprayer" data-description="Large-scale crop protection sprayer for farms" data-price="95000" data-image="boom-sprayer.jpg">
+          <a href="equipment.html?equipment=crop_protection_boom_sprayer" class="equipment-link">
+            <img src="../assets/crop_protection_boom_sprayer.jpg" alt="Crop Protection Boom Sprayer">
+            <h3>Crop Protection Boom Sprayer</h3>
+            <p>Price: ₹95,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Fertilizer_Spreader" data-description="Efficient machine for even fertilizer distribution" data-price="75000" data-image="fertilizer-spreader.jpg">
+          <a href="equipment.html?equipment=fertilizer_spreader" class="equipment-link">
+            <img src="../assets/fertilizer_spreader.jpg" alt="Fertilizer Spreader">
+            <h3>Fertilizer Spreader</h3>
+            <p>Price: ₹75,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Chaff_Cutter" data-description="High-speed chaff cutter for animal fodder" data-price="40000" data-image="chaff-cutter.jpg">
+          <a href="equipment.html?equipment=chaff_cutter" class="equipment-link">
+            <img src="../assets/chaff_cutter.jpg" alt="Chaff Cutter">
+            <h3>Chaff Cutter</h3>
+            <p>Price: ₹40,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Silage_Packing_Machine" data-description="Machine for efficient silage packaging and storage" data-price="210000" data-image="silage-packing-machine.jpg">
+          <a href="equipment.html?equipment=silage_packing_machine" class="equipment-link">
+            <img src="../assets/silage_packing.jpg" alt="Silage Packing Machine">
+            <h3>Silage Packing Machine</h3>
+            <p>Price: ₹2,10,000</p>
+          </a>
+        </div>
+        
+        <div class="equipment-card" data-name="Paddy_Transplanter" data-description="Automated paddy transplanting machine" data-price="145000" data-image="paddy-transplanter.jpg">
+          <a href="equipment.html?equipment=paddy_transplanter" class="equipment-link">
+            <img src="../assets/paddy_transplanter_.png" alt="Paddy Transplanter">
+            <h3>Paddy Transplanter</h3>
+            <p>Price: ₹1,45,000</p>
+          </a>
+        </div>
+        
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links Section -->
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+  
+        <!-- Social Media Section -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+          </ul>
+        </div>
+  
+        <!-- Newsletter Subscription -->
+        <div class="footer-newsletter">
+          <h3>Subscribe to Our Newsletter</h3>
+          <p>Stay updated with the latest news, tips, and offers from AgroTech!</p>
+          <form action="#" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="cta-button primary-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p>&copy; 2024 AgroTech. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="AddToCart.html" class="go-to-cart-btn">Add to Cart</a>
+
+  <script src="../scripts/speak.js"></script>
+  <script>
+    // Search Equipment by Name
+    function searchEquipment() {
+        let searchInput = document.getElementById("searchInput").value.toLowerCase();
+        let equipmentCards = document.querySelectorAll(".equipment-card");
+
+        equipmentCards.forEach(equipment => {
+            let equipmentName = equipment.querySelector("h3").innerText.toLowerCase();
+            if (equipmentName.includes(searchInput)) {
+                equipment.style.display = "block";
+            } else {
+                equipment.style.display = "none";
+            }
+        });
+    }
+    localStorage.setItem('shopOrigin', '../HtmlStructure/featuredEquipment.html');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroMart Crop Help</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        select, textarea, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #e0ffe0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AgroTech Crop Help</h1>
+        <label for="language">Select Language:</label>
+        <select id="language">
+            <option value="">Choose Language</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Telugu">Telugu</option>
+            <option value="Kannada">Kannada</option>
+            <option value="Malayalam">Malayalam</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Gujarati">Gujarati</option>
+            <option value="Marathi">Marathi</option>
+            <option value="Punjabi">Punjabi</option>
+        </select>
+
+        <textarea id="query" placeholder="Enter your crop-related query..."></textarea>
+        <button id="submitBtn" onclick="askAI()">Submit</button>
+        <div id="apiStatus" style="margin-top: 15px; padding: 10px; border-radius: 5px; display:none;"></div>
+        <div id="response" class="response" style="display:none;"></div>
+        <iframe id="video" width="100%" height="315" style="display:none;" allowfullscreen></iframe>
+    </div>
+    <script>
+        function getYouTubeEmbedUrl(videoUrl) {
+            try {
+                const url = new URL(videoUrl);
+                const hostname = url.hostname.toLowerCase();
+
+                if (hostname.includes('youtube.com')) {
+                    const videoId = url.searchParams.get('v');
+                    if (videoId) {
+                        return `https://www.youtube.com/embed/${videoId}`;
+                    }
+                    const pathParts = url.pathname.split('/').filter(Boolean);
+                    if (pathParts.length > 0 && pathParts[0] === 'shorts') {
+                        return `https://www.youtube.com/embed/${pathParts[1]}`;
+                    }
+                }
+
+                if (hostname === 'youtu.be') {
+                    const pathParts = url.pathname.split('/').filter(Boolean);
+                    if (pathParts.length > 0) {
+                        return `https://www.youtube.com/embed/${pathParts[0]}`;
+                    }
+                }
+            } catch (e) {
+                console.error('Invalid YouTube URL:', e);
+            }
+            return null;
+        }
+
+        async function checkAPIStatus() {
+            const statusDiv = document.getElementById('apiStatus');
+            const submitBtn = document.getElementById('submitBtn');
+            const fallbackOrigin = 'http://localhost:5032';
+            const origin = window.location.protocol === 'file:' ? fallbackOrigin : window.location.origin;
+
+            try {
+                const response = await fetch(`${origin}/check-api-status`);
+                const status = await response.json();
+
+                if (status.allValid) {
+                    statusDiv.style.display = 'none';
+                    submitBtn.disabled = false;
+                    return true;
+                } else {
+                    let warning = '⚠️ API Configuration Issue:\n';
+                    if (!status.cohere) warning += '- Cohere API key is missing\n';
+                    if (!status.youtube) warning += '- YouTube API key is missing\n';
+                    statusDiv.innerHTML = warning.replace(/\n/g, '<br/>');
+                    statusDiv.style.background = '#ffe0e0';
+                    statusDiv.style.color = '#c00';
+                    statusDiv.style.display = 'block';
+                    submitBtn.disabled = true;
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error checking API status:', error);
+                statusDiv.innerHTML = '⚠️ Could not verify API status. Backend may be offline.';
+                statusDiv.style.background = '#fff3cd';
+                statusDiv.style.color = '#856404';
+                statusDiv.style.display = 'block';
+                return false;
+            }
+        }
+
+        async function askAI() {
+            const language = document.getElementById('language').value.trim();
+            const query = document.getElementById('query').value.trim();
+            const responseDiv = document.getElementById('response');
+            const videoFrame = document.getElementById('video');
+            const fallbackOrigin = 'http://localhost:5032';
+            const origin = window.location.protocol === 'file:' ? fallbackOrigin : window.location.origin;
+            const apiEndpoint = `${origin}/ask`;
+    
+            responseDiv.style.display = 'block';
+            responseDiv.innerText = '⏳ Processing... Please wait.';
+            videoFrame.style.display = 'none';
+            videoFrame.src = '';
+
+            if (!language || !query) {
+                responseDiv.innerText = '⚠️ Please select a language and enter your query.';
+                return;
+            }
+
+            const apiValid = await checkAPIStatus();
+            if (!apiValid) {
+                responseDiv.style.display = 'none';
+                return;
+            }
+
+            try {
+                const response = await fetch(apiEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ language, query }),
+                    cache: 'no-store'
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error || 'Server returned an error');
+                }
+
+                const data = await response.json();
+                responseDiv.innerText = data.answer || '❌ No answer found. Please try again.';
+                responseDiv.style.background = '#e0ffe0';
+                responseDiv.style.color = '#3c763d';
+
+                if (data.videoUrl) {
+                    const embedUrl = getYouTubeEmbedUrl(data.videoUrl);
+                    if (embedUrl) {
+                        videoFrame.src = embedUrl;
+                        videoFrame.style.display = 'block';
+                    } else {
+                        console.warn('Could not extract embed URL from:', data.videoUrl);
+                    }
+                } else {
+                    console.log('No video available for this query.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                responseDiv.style.background = '#ffe0e0';
+                responseDiv.style.color = '#c00';
+                responseDiv.innerText = '❌ ' + (error.message || 'Failed to get a response. Please check your backend server connection.');
+            }
+        }
+
+        // Check API status on page load
+        document.addEventListener('DOMContentLoaded', checkAPIStatus);
+    </script>
+</body>
+</html>

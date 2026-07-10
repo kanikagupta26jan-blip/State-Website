@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroMart Community Chat</title>
+  <link rel="stylesheet" href="../CSS/JoinCommunity.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/main_logo.png">
+  <!-- Socket.IO client library -->
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../assets/main_logo.png" alt="AgroTech Logo" />
+      </div>
+      <!-- Navigation Menu -->
+      <nav class="nav">
+        <ul>
+          <li><a href="../HtmlStructure/home.html">Home</a></li>
+          <li><a href="../HtmlStructure/AboutUS.html">About Us</a></li>
+          <li class="submenu">
+            <a href="../HtmlStructure/services.html">Services</a>
+            <ul class="submenu-list">
+              <li><a href="../HtmlStructure/FeaturedProducts.html">Buy Products</a></li>
+              <li><a href="../HtmlStructure/AddProduct.html">Sell Products</a></li>
+              <li><a href="../HtmlStructure/featuredEquipment.html">Rent Equipment</a></li>
+              <li><a href="#blogs">Blogs & Tutorials</a></li>
+            </ul>
+          </li>
+          <li><a href="../HtmlStructure/JoinCommunity.html">Create Community</a></li>
+          <li><a href="../HtmlStructure/expert.html">Expert Opinion</a></li>
+        </ul>
+      </nav>
+      <!-- Language Switcher and Login/Sign Up -->
+      <div class="header-actions">
+        <select class="language-switcher">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ta">Tamil</option>
+          <option value="kn">Kannada</option>
+        </select>
+        <a href="../HtmlStructure/login.html" class="login-btn">Login</a>
+        <a href="../HtmlStructure/Form_signin.html" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="chat-container">
+    <div class="chat-box" id="chat-box">
+      <!-- Chat messages will appear here -->
+    </div>
+    <div class="input-container">
+      <input type="text" id="message-input" placeholder="Type your message..." />
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links Section -->
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+        <!-- Social Media Section -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+          </ul>
+        </div>
+        <!-- Newsletter Subscription -->
+        <div class="footer-newsletter">
+          <h3>Subscribe to Our Newsletter</h3>
+          <p>Stay updated with the latest news, tips, and offers from AgroTech!</p>
+          <form action="#" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required />
+            <button type="submit" class="cta-button primary-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 AgroTech. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../scripts/speak.js"></script>
+  <script>
+    // Connect to the Socket.IO server
+    const socket = io();
+
+    // For demonstration, assign a random username.
+    // In production, replace this with the actual logged-in user's username.
+    const currentUser = "User" + Math.floor(Math.random() * 1000);
+    console.log("Current user:", currentUser);
+
+    const chatBox = document.getElementById('chat-box');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-btn');
+
+    // Function to add a message to the chat box
+    function addMessage(message, className) {
+      console.log("Adding message to chat container:", message);
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message');
+      if (className) messageElement.classList.add(className);
+      messageElement.textContent = message;
+      chatBox.appendChild(messageElement);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Listen for incoming messages from the server
+    socket.on('chat message', (msgData) => {
+      console.log("Received message:", msgData);
+      const isSelf = msgData.user === currentUser;
+      addMessage(msgData.user + ": " + msgData.message, isSelf ? 'self' : 'other');
+    });
+
+    // Send message on button click
+    sendButton.addEventListener('click', () => {
+      const message = messageInput.value.trim();
+      if (message) {
+        console.log("Sending message:", message);
+        // Emit the message to the server along with the user's name
+        socket.emit('chat message', { user: currentUser, message: message });
+        messageInput.value = '';
+      } else {
+        console.log("No message entered.");
+      }
+    });
+
+    // Optionally, send the message when the Enter key is pressed
+    messageInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendButton.click();
+      }
+    });
+  </script>
+</body>
+</html>
