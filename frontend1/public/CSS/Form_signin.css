@@ -1,0 +1,151 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e0f7fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://example.com/field-background.jpg'); /* Optional farm image */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Form Container */
+.form-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  padding: 35px;
+  width: 100%;
+  max-width: 600px;
+  backdrop-filter: blur(8px);
+}
+
+/* Heading */
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  color: #2e7d32;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Form Group (Input fields) */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  color: #2c6c2f;
+  font-size: 1rem;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #81c784;
+  border-radius: 8px;
+  background-color: #f1f8e9;
+  font-size: 1rem;
+  color: #388e3c;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+  border-color: #66bb6a;
+  outline: none;
+}
+
+/* Submit Button */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #66bb6a;
+}
+
+button:active {
+  background-color: #2c6c2f;
+}
+
+/* Optional Effects */
+button:active {
+  background-color: #2c6c2f;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+select:hover {
+  background-color: #f9fbe7;
+}
+
+
+.messageDiv{
+  background-color: #2c6c2f;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 1rem ;
+  opacity: 0;
+  animation: fadeOut 7s forwards;
+}
+
+/* General styling for the message container */
+.messageDiv {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Success message */
+.messageDiv.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Error message */
+.messageDiv.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Login link styling */
+.messageDiv a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.messageDiv a:hover {
+  text-decoration: underline;
+}

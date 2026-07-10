@@ -1,0 +1,347 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Header Section */
+.header {
+  background-color: #4CAF50; /* Green color to represent agriculture */
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98vw;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.logo{
+  padding: 0px;
+}
+
+.logo img {
+  height: 60px;
+}
+
+.nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px 0px;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: #f7c14c; /* Yellow color for hover effect */
+}
+
+/* Styling for submenu */
+.submenu {
+  position: relative;
+}
+
+.submenu .submenu-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #93c572;
+  border: 1px solid #ddd;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px;
+  min-width: 150px; /* Minimum width for submenu */
+}
+
+.submenu:hover .submenu-list {
+  display: block;
+}
+
+.submenu-list li a {
+  color: #4b5e3a;
+  font-weight: normal;
+  text-transform: none;
+  padding: 8px 12px;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.language-switcher {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.language-switcher option {
+  padding: 10px;
+}
+
+.login-btn, .signup-btn {
+  padding: 8px 15px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  background-color: #f7c14c; /* Yellow color */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.signup-btn{
+  width: max-content;
+}
+
+.login-btn:hover, .signup-btn:hover {
+  background-color: #d89a39; /* Darker yellow on hover */
+}
+/* Cart Section */
+.cart-section {
+  background-color: #fff;
+  padding: 40px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #3e6b2f; /* Dark green for headings */
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Georgia', serif; /* Slightly formal font for agriculture feel */
+}
+
+/* Cart Table Styles */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fafafa; /* Slight off-white */
+}
+
+.cart-row.header {
+  font-weight: bold;
+  background-color: #3e6b2f; /* Dark green header */
+  color: #fff;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-price,
+.cart-total {
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+  color: #3e6b2f;
+}
+
+.cart-quantity input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.cart-action button {
+  background-color: #d74d33; /* Earthy red for action buttons */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.cart-action button:hover {
+  background-color: #c94c2d; /* Darker red for hover */
+}
+
+/* Cart Summary Styles */
+.cart-summary {
+  padding: 20px;
+  background-color: #e6f7e6; /* Light green for summary section */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.summary-actions {
+  text-align: center;
+}
+
+.checkout-btn {
+  background-color: #27ae60; /* Green for checkout button */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.checkout-btn:hover {
+  background-color: #2ecc71; /* Lighter green on hover */
+}
+
+ /* Footer Section */
+ .footer {
+  background-color: #467a33; /* Dark green background for footer */
+  color: #fff; /* White text for contrast */
+  padding: 60px 20px;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.footer-links, .footer-social, .footer-newsletter {
+  flex: 1 1 30%;
+  margin-bottom: 40px;
+}
+
+.footer-links h3, .footer-social h3, .footer-newsletter h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.footer-links ul,
+.footer-social ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li, .footer-social li {
+  margin: 10px 0;
+}
+
+.footer-links a, .footer-social a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+  color: #62a944; /* Light green hover effect */
+}
+
+.footer-newsletter form {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-newsletter input {
+  padding: 10px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  width: 70%;
+}
+
+.footer-newsletter button {
+  padding: 12px 20px;
+  background-color: #62a944;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+  background-color: #467a33; /* Darker green on hover */
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: #ccc; /* Light gray for copyright text */
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-social a i {
+  margin-right: 10px;
+}

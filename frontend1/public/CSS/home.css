@@ -1,0 +1,681 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Header Section */
+  .header {
+    background-color: #4CAF50; /* Green color to represent agriculture */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98vw;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  
+  .logo{
+    padding: 0px;
+  }
+  
+  .logo img {
+    height: 60px;
+  }
+  
+  .nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav ul li a:hover {
+    color: #f7c14c; /* Yellow color for hover effect */
+  }
+  
+  /* Styling for submenu */
+  .submenu {
+    position: relative;
+  }
+  
+  .submenu .submenu-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #93c572;
+    border: 1px solid #ddd;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px;
+    min-width: 150px; /* Minimum width for submenu */
+  }
+  
+  .submenu:hover .submenu-list {
+    display: block;
+  }
+  
+  .submenu-list li a {
+    color: #4b5e3a;
+    font-weight: normal;
+    text-transform: none;
+    padding: 8px 12px;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .language-switcher {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .language-switcher option {
+    padding: 10px;
+  }
+  
+  .login-btn, .signup-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    background-color: #f7c14c; /* Yellow color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-btn{
+    width: max-content;
+  }
+  
+  .login-btn:hover, .signup-btn:hover {
+    background-color: #d89a39; /* Darker yellow on hover */
+  }
+  
+  
+  /* Hero Section */
+  .hero {
+    position: relative; /* Ensure content stays above the video */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    color: white;
+    padding: 4rem 3rem; /* Space around the section */
+  }
+  
+  /* Video Background */
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure video stays behind the content */
+  }
+  
+  .video-background video {
+    object-fit: cover; /* Make sure the video covers the section */
+    width: 100%;
+    height: 100%;
+  }
+  
+  .hero-content {
+    max-width: 75rem; /* Max width for content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Wrap content on smaller screens */
+  }
+  
+  .hero-text {
+    flex: 1;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem; /* Main heading */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+  
+  .hero-text p {
+    font-size: 1.5rem; /* Subtitle */
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .cta-btn {
+    text-decoration: none;
+    background-color: #f7c14c; /* Yellow button */
+    color: #333;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-btn:hover {
+    background-color: #d89a39; /* Darker yellow on hover */
+  }
+  
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-image img {
+    max-width: 80%;
+    height: 30rem;
+    border-radius: 1rem; /* Slightly rounded corners */
+  }
+  
+  /* Feature Section */
+  .features {
+    background: linear-gradient(120deg, #f7fcf7, #e8fce8);
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+  
+  .features-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    color: #2e7d32;
+    font-weight: bold;
+    margin-bottom: 1rem; /* Space between heading and subheading */
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    color: #4f4f4f;
+    margin-bottom: 3rem;
+    line-height: 1.5;
+  }
+  
+  /* Feature Grid */
+  .feature-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .feature-item {
+    flex: 1 1 calc(25% - 2rem); /* Equal-width cards */
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 20rem; /* Consistent card width */
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem auto;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon-wrapper img {
+    width: 3rem;
+  }
+  
+  .feature-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .feature-item p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* Section 4: Call to Action Section */
+  .cta-section {
+    background: linear-gradient(135deg, #93c572, #5a8e3f); /* Light green to dark green gradient */
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .cta-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cta-text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for better contrast */
+  }
+  
+  .cta-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  .primary-btn {
+    background-color: #62a944; /* Vibrant green */
+    color: white;
+    border: 2px solid #62a944;
+  }
+  
+  .secondary-btn {
+    background-color: white;
+    color: #62a944; /* Green text for contrast */
+    border: 2px solid #62a944;
+  }
+  
+  .cta-button:hover {
+    background-color: #467a33; /* Darker green for hover effect */
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .cta-button:active {
+    transform: translateY(2px);
+  }
+  
+  .cta-button.secondary-btn:hover {
+    background-color: #62a944; /* Light green for hover on secondary button */
+    color: white;
+  }
+  
+  /* Section 5: How AgroTech Works */
+  .how-it-works {
+    background-color: #e7f4e8; /* Light green background for freshness */
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .how-it-works .how-it-works-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .how-it-works h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #467a33; /* Dark green for the heading */
+  }
+  
+  .how-it-works p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  
+  .steps-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .step-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: center;
+  }
+  
+  .step-item .icon {
+    margin-bottom: 20px;
+  }
+  
+  .step-item img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .step-item h3 {
+    font-size: 1.8rem;
+    color: #467a33;
+    margin-bottom: 15px;
+  }
+  
+  .step-item p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  .primary-btn {
+    background-color: #62a944; /* Vibrant green */
+    color: white;
+    border: 2px solid #62a944;
+  }
+  
+  .secondary-btn {
+    background-color: white;
+    color: #62a944; /* Green text for contrast */
+    border: 2px solid #62a944;
+  }
+  
+  .cta-button:hover {
+    background-color: #467a33; /* Darker green for hover effect */
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .cta-button:active {
+    transform: translateY(2px);
+  }
+  
+  .cta-button.secondary-btn:hover {
+    background-color: #62a944; /* Light green for hover on secondary button */
+    color: white;
+  }
+  
+  /* Section: Our Mission */
+  .our-mission {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .our-mission .our-mission-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .our-mission h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #467a33;
+  }
+  
+  .our-mission p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 20px 0;
+    font-weight: 300;
+  }
+  
+  .mission-cta {
+    margin-top: 30px;
+  }
+  
+  .mission-cta .cta-button {
+    background-color: #62a944;
+    color: white;
+    border: 2px solid #62a944;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .mission-cta .cta-button:hover {
+    background-color: #467a33;
+    color: white;
+  }
+  
+  /* Section: Contact Us */
+  .contact-us {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .contact-us .contact-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact-us h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #467a33;
+  }
+  
+  .contact-us p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 20px 0;
+    font-weight: 300;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-form button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    background-color: #62a944;
+    color: white;
+    border: 2px solid #62a944;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .contact-form button:hover {
+    background-color: #467a33;
+    color: white;
+  }
+  
+  /* Footer Section */
+  .footer {
+    background-color: #467a33; /* Dark green background for footer */
+    color: #fff; /* White text for contrast */
+    padding: 60px 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  
+  .footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+  }
+  
+  .footer-links, .footer-social, .footer-newsletter {
+    flex: 1 1 30%;
+    margin-bottom: 40px;
+  }
+  
+  .footer-links h3, .footer-social h3, .footer-newsletter h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .footer-links ul,
+  .footer-social ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li, .footer-social li {
+    margin: 10px 0;
+  }
+  
+  .footer-links a, .footer-social a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover, .footer-social a:hover {
+    color: #62a944; /* Light green hover effect */
+  }
+  
+  .footer-newsletter form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .footer-newsletter input {
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: none;
+    width: 70%;
+  }
+  
+  .footer-newsletter button {
+    padding: 12px 20px;
+    background-color: #62a944;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footer-newsletter button:hover {
+    background-color: #467a33; /* Darker green on hover */
+  }
+  
+  .footer-bottom {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: #ccc; /* Light gray for copyright text */
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
+  
+  .footer-social a i {
+    margin-right: 10px;
+  }
+  
